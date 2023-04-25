@@ -1,0 +1,76 @@
+.header-container {
+    background-color: #fff;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .order-select,
+  .filter-select,
+  .temperament-select {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .create-dog-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .create-dog-button {
+    background-color: #003049;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* Estilos para la lista de perros */
+  /* .dog-list-container {
+  display: flex;
+  justify-content: space-evenly;
+  } */
+  
+  .dog-list-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  }
+  
+  /* .dog-card-container {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+    
+  }
+   */
+  .paginate-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
