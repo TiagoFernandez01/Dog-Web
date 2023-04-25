@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getTemperaments, FilterByTemperament, OrderByName, OrderByWeight } from "../../actions";
+import { getDogs, getTemperaments, FilterByTemperament, OrderByName, OrderByWeight, filterDogs } from "../../actions";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Paginate from "../Paginate/Paginate";
@@ -11,6 +11,7 @@ function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector(state => state.dogs); //valores del estado global de redux que requiero
   const allTemperaments = useSelector(state => state.temperaments);
+  const filteredDogs = useSelector(state => state.filteredDogs);
 
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
@@ -50,14 +51,20 @@ function Home() {
     setOrden(`Sorted ${e.target.value}`);
   };
 
+  const handleFIlterDods = (e) => {
+    e.preventDefault();
+    dispatch(filterDogs(e.target.value));
+
+  };
+
   return (
     <>
-      <header className="header-container"> 
+      <header className="header-container">
         <div className="header-content">
           <div className="search-bar-container">
             <SearchBar />
             <div className="select-container">
-              <select onChange={handleOrderByName} className="order-select"> 
+              <select onChange={handleOrderByName} className="order-select">
                 <option disabled selected defaultValue>
                   Alphabetical order
                 </option>
@@ -65,7 +72,7 @@ function Home() {
                 <option value="Z-A">Z-A</option>
               </select>
 
-              <select onChange={handleOrderByWeight} className="filter-select"> 
+              <select onChange={handleOrderByWeight} className="filter-select">
                 <option disabled selected defaultValue>
                   Filter by weight
                 </option>
@@ -73,7 +80,13 @@ function Home() {
                 <option value="min_weight">Min</option>
               </select>
 
-              <select onChange={handleFilterByTemperament} className="temperament-select"> 
+              <select className="filter-select" onChange={handleFIlterDods}>
+                <option value="All_dogs" >All Dogs</option>
+                <option value="db_dogs" >DB Dogs</option>
+                <option value="api_dogs" >API Dogs</option>
+              </select>
+
+              <select onChange={handleFilterByTemperament} className="temperament-select">
                 <option disabled selected defaultValue>Temperaments</option>
                 <option value="All">All</option>
                 {
@@ -86,7 +99,7 @@ function Home() {
           </div>
           <div className="create-dog-container">
             <Link to="/dog">
-              <button className="create-dog-button">CREATE DOG</button> 
+              <button className="create-dog-button">CREATE DOG</button>
             </Link>
           </div>
         </div>
@@ -98,7 +111,7 @@ function Home() {
         <div className="dog-list-content">
           {currentDogs?.map((el) => {
             return (
-              <div className="dog-card-container" key={el.id}> 
+              <div className="dog-card-container" key={el.id}>
                 <Link to={"/dog-detail/" + el.id}>
                   {
                     <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments[0].name ? el.temperaments.map(el => el.name) : el.temperaments} />
@@ -107,12 +120,13 @@ function Home() {
               </div>
             )
           })}
-        </div> 
+        </div>
         <div className="paginate-container">
-          <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginate={paginate} /> 
+          <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginate={paginate} />
         </div>
       </div>
     </>
-  )};
+  )
+};
 
 export default Home;

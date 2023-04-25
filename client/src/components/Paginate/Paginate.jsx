@@ -1,5 +1,6 @@
 import React from "react";
 import "./Paginate.css"
+
 export default function Paginate({ dogsPerPage, allDogs, paginate }) {
     let pageNumbers = [];
     Array.from({ length: Math.ceil(allDogs / dogsPerPage) }, (_, i) => i + 1)

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, GET_TEMPERAMENTS, GET_FILTER_TEMPERAMENTS, GET_BREED, ORDER_BY_NAME, ORDER_BY_WEIGHT, DOG_DETAILS } from './types';
+import { GET_DOGS, GET_TEMPERAMENTS, GET_FILTER_TEMPERAMENTS, GET_BREED, ORDER_BY_NAME, ORDER_BY_WEIGHT, DOG_DETAILS,FILTER_DOGS } from './types';
 
 export function getDogs() {
     return async function (dispatch) {
@@ -93,5 +93,12 @@ export function postDog(payload) {
     return async function () {
         const data = await axios.post("http://localhost:3001/dogs", payload);
         return data;
+    }
+}
+
+export function filterDogs(payload){
+    return {
+        type:FILTER_DOGS,
+        payload
     }
 }
