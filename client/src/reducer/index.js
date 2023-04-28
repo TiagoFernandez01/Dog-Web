@@ -8,7 +8,7 @@ const initialState = {
   
 }
 
-const rootReducer = (state = initialState, action) => {//creo el reducer pasandoles el estado inicial y las actions
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DOGS:
       action.payload.forEach(el => {
@@ -22,10 +22,10 @@ const rootReducer = (state = initialState, action) => {//creo el reducer pasando
         allDogs: action.payload,
       };
     case GET_TEMPERAMENTS:
-      const filteresTemp = action.payload.filter((temp) => temp.name !== ""); //quito strings vacios
+      const filteredTemp = action.payload.filter((temp) => temp.name !== ""); //quito perros con strings vacios
       return {
         ...state,
-        temperaments: filteresTemp,
+        temperaments: filteredTemp,
       };
 
     case GET_FILTER_TEMPERAMENTS:
@@ -34,12 +34,14 @@ const rootReducer = (state = initialState, action) => {//creo el reducer pasando
       if (action.payload === "All") {
         filteredDogs = allDogs;
       } else {
-        for (let i = 0; i < allDogs.length; i++) {
-          let found = allDogs[i].temperaments.find((t) => t === action.payload);
+        allDogs.forEach((dog) => {
+          let found = dog.temperaments.find((t) => t === action.payload);
+          
           if (found) {
-            filteredDogs.push(allDogs[i]);
+            filteredDogs.push(dog);
           }
-        }
+        });
+        
       }
       return {
 
@@ -81,7 +83,7 @@ const rootReducer = (state = initialState, action) => {//creo el reducer pasando
       };
     case DOG_DETAILS:
       let myDetails = action.payload
-      if (!myDetails[0].temperaments[0]) { //agregamos "no-temperaments" a arreglos sin elementos dentro
+      if (!myDetails[0].temperaments[0]) {
         myDetails[0].temperaments[0] = "no-temperaments"
       }
       return {

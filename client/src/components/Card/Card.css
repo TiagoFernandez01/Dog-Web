@@ -1,25 +1,32 @@
-a{
+a {
     text-decoration: none;
-    
+
 }
 
-.main_container{
-    font-size: 0.7rem;
-    text-decoration: none;
+.main_container {
+
+    border-radius: 25px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
     max-height: 50vh;
     overflow: hidden;
-    color: #575025;
     position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 
-.main_container::before{
+.main_container::before {
     content: "";
     position: absolute;
 }
 
-.main_container:hover::before{
+.main_container:hover::before {
     content: "Details";
     height: 100%;
     width: 100%;
@@ -28,14 +35,16 @@ a{
     font-size: 2.2rem;
     left: 0%;
     background-color: rgba(93, 92, 92, 0.5);
+    text-decoration: none;
+    color: rgba(210, 113, 2, 0.801)
 }
 
-.image_container{
+.image_container {
     height: 29vh;
     border-radius: 7px;
 }
 
-.image_container img{
+.image_container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -43,17 +52,21 @@ a{
 
 
 
-.main_container h2{
-    color: white;
+.main_container h2 {
+    color: black;
 }
 
-.temperaments_container{ /*que hermoso es grid*/
+.main_container h3 {
+    color: #a961d2
+}
+
+.temperaments_container {
     text-decoration: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0 0.7rem;
 }
 
-.temperaments_container h3{
+.temperaments_container h3 {
     margin: 0 0.3rem 0.4rem 0.3rem;
 }

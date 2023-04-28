@@ -16,17 +16,17 @@
     max-width: 300px;
   }
   
-  .search-button {
-    padding: 10px 20px;
-    background-color: #007bff;
+  .search-buttom {
+    background-color: #003049;
     color: #fff;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
   }
   
-  .search-button:hover {
-    background-color: #0062cc;
+  .search-buttom:hover {
+    background-color: #498eb3;
   }
   

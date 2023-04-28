@@ -5,9 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background: linear-gradient(245.59deg, #a8c8ff 0%, #b4c8ff 28.53%, #57b9ff) */
+  background-image: url(./images/fondoHuesos.jpg);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+  }

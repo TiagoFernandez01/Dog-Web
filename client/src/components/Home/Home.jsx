@@ -11,7 +11,7 @@ function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector(state => state.dogs); //valores del estado global de redux que requiero
   const allTemperaments = useSelector(state => state.temperaments);
-  const filteredDogs = useSelector(state => state.filteredDogs);
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
@@ -25,11 +25,11 @@ function Home() {
     setCurrentPage(pageNumber)
   };
 
-  // eslint-disable-next-line
+  
   const [orden, setOrden] = useState("");
 
   useEffect(() => {
-    //acciones a depachar luego de montar el componente
+    // usamos useEffect para despachar ambas actions una vez montado el componente
     dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
@@ -40,7 +40,7 @@ function Home() {
   };
 
   const handleOrderByName = (e) => {
-    e.preventDefault();
+    e.preventDefault();                                    //creamos los handlers para ejecutar nuestras actions de ordenamineto y filtrado
     dispatch(OrderByName(e.target.value));
     setOrden(`Sorted ${e.target.value}`);
   };
@@ -122,7 +122,7 @@ function Home() {
           })}
         </div>
         <div className="paginate-container">
-          <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginate={paginate} />
+          <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginate={paginate} currentPage={currentPage} />
         </div>
       </div>
     </>

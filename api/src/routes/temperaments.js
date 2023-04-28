@@ -8,7 +8,7 @@ router.get('/', async (req,res,next) => {
     try {
         const temps = await getTemperaments();
         
-        temps.forEach(el => { //creo o encuentro todos los temperamentos en mi base de datos
+        temps.forEach(el => { 
             let i = el.trim() // borro espacios en blanco que trae la API
             Temperament.findOrCreate({
                  where: { name: i }
@@ -16,7 +16,7 @@ router.get('/', async (req,res,next) => {
         })
     
         const allTemp = await Temperament.findAll();    
-        res.status(200).json(allTemp);
+        allTemp ? res.status(200).json(allTemp) : res.status(400).json({error: 'Ups, spmething is wrong; Try Again.'})
     } catch (error) {
         next (error);
     }

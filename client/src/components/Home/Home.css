@@ -48,6 +48,10 @@
     font-size: 1rem;
     cursor: pointer;
   }
+
+  .create-dog-button:hover{
+    background-color: #498eb3;
+  }
   
   /* Estilos para la lista de perros */
   /* .dog-list-container {

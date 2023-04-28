@@ -1,30 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img from '../LandingPage/img/landingDog.png'
-
-import style from "../LandingPage/LandingPage.module.css"
+import img from '..//../images/landingDog.png'
+import "./LandingPage.css"
 
 function LandingPage() {
     return (
 
-        <body className={`${style.contedor_uno}`}>
+        <div className="landing-container">
 
-
-            <div className={`${style.main_container}`}>
-                <h1 className={`${style.tittle}`}>Dog Page</h1>
-                <p>
+            <div>
+                <h1 >Dog Page</h1>
+                <p className="parragraph">
                     Come in, search and discover your favorite dog breeds!
                     Search for your pet or create it yourself now!
                 </p>
 
-                <div className={`${style.img_container}`}>
+                <div>
                     <img src={img} alt="dog" />
                 </div>
                 <Link to='/home'>
-                    <button class={`${style.btn}`}> Join! </button>
+                    <button className="btn"> Join! </button>
                 </Link>
             </div>
-        </body>
+        </div>
     )
 }
 

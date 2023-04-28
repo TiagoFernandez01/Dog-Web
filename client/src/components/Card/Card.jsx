@@ -6,7 +6,7 @@ export default function Card({ image, name, temperaments }) {
   return (
     <div className="main_container">
       <div className="image_container">
-        <img className="img" src={`${image}`} alt={`imagen de: ${name}`} />
+        <img src={`${image}`} alt={`imagen de: ${name}`} />
       </div>
       <h2>{name}</h2>
       <div  className="temperaments_container">

@@ -8,13 +8,7 @@ const getDogsApi = async () => { //me traigo todos los dog desde la API
     try {
         const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
 
-        
         const apiInfo = await apiUrl.data.map(el => {
-        // let temperamentArray = [];
-        // if (el.temperament) {//pregunto que exista el temperamento y lo devuelvo en un arreglo
-        //     temperamentArray = el.temperament.split(", ");
-        // }
-        
             return {
                 id: el.id,
                 name: el.name,
@@ -29,6 +23,8 @@ const getDogsApi = async () => { //me traigo todos los dog desde la API
     } catch (error) {
         return null;
     }
+
+    
     
 };
 

@@ -15,7 +15,7 @@ export default function DogDetail() {
     }, [dispatch, id]);
 
     const details = useSelector((state) => state.details)
-    // console.log(details);
+    
 
     let nameDog;
     let imageDog;
@@ -45,26 +45,23 @@ export default function DogDetail() {
     return (
         <div className="main-container">
             <Link to="/home">
-                <button className>Home</button>
+                <button>Home</button>
             </Link>
-            <div className>
-                <div className>
+            <div>
+                <div className="img-container">
+                    <img src={imageDog} alt={`imagen de ${nameDog}`} />
+                </div>
 
-                    <div className>
-                        <img src={imageDog} alt={`imagen de ${nameDog}`} />
-                    </div>
-
-                    <div className>
-                        <h1>{nameDog}</h1>
-                        <h3>{`Height: ${heightDog && heightDog[0]} - ${heightDog && heightDog[1]} CM`}</h3>
-                        <h3>{`Weight: ${heightDog && weightDog[0]} - ${weightDog && weightDog[1]} KG`}</h3>
-                        <h3>{`Lifespan: ${lifeSpanDog}`}</h3>
-                        <div>
-                            <h3>Temperaments</h3>
-                            <ul className>
-                                {temperamentDog.map(t => <li key={t}>{t}</li>)}
-                            </ul>
-                        </div>
+                <div>
+                    <h1>{nameDog}</h1>
+                    <h3>{`Height: ${heightDog && heightDog[0]} - ${heightDog && heightDog[1]} CM`}</h3>
+                    <h3>{`Weight: ${heightDog && weightDog[0]} - ${weightDog && weightDog[1]} KG`}</h3>
+                    <h3>{`Lifespan: ${lifeSpanDog}`}</h3>
+                    <div>
+                        <h3>Temperaments</h3>
+                        <ul>
+                            {temperamentDog.map(t => <li key={t}>{t}</li>)}
+                        </ul>
                     </div>
                 </div>
             </div>

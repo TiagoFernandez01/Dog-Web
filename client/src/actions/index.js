@@ -46,8 +46,8 @@ export function FilterByTemperament(payload) {
 
 };
 
-export function getBreed(payload) {//dogs by name
-    return async function (dispatch) {//Dispatch que podemos usar gracias a la asincronia provista por el middleware thunk
+export function getBreed(payload) {
+    return async function (dispatch) {
         try {
             var json = await axios.get(`http://localhost:3001/dogs?name=${payload}`)
             return dispatch({
@@ -59,6 +59,7 @@ export function getBreed(payload) {//dogs by name
         }
     }
 };
+
 
 export function OrderByName(payload) {
     return {

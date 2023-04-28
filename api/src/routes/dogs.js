@@ -37,18 +37,24 @@ router.get('/:idRaza', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-    try {
-        let {
-            name,
-            min_height,
-            max_height,
-            min_weight,
-            max_weight,
-            life_span,
-            temperaments,
-            image
-        } = req.body
 
+    let {
+        name,
+        min_height,
+        max_height,
+        min_weight,
+        max_weight,
+        life_span,
+        temperaments,
+        image
+    } = req.body
+
+    if(!name || !min_height || !max_height || !min_weight || max_weight || temperaments ){
+        return res.status(400).json({error: 'Complete all fields requerid'})
+    }
+
+    try {
+    
         const fixedHeight = [min_height, max_height];
         const fixedWeight = [min_weight, max_weight];
 
@@ -66,7 +72,8 @@ router.post('/', async (req, res, next) => {
 
         dog.addTemperament(associatedTemp);
 
-        res.status(200).send("Dog created succesfully!")
+        dog.length ? res.status(200).send("Dog created succesfully!") : res.status(400).json({error: 'Ups, something is wrong, Try Again.'})
+        
     } catch (error) {
 
     }
