@@ -49,7 +49,7 @@ router.post('/', async (req, res, next) => {
         image
     } = req.body
 
-    if(!name || !min_height || !max_height || !min_weight || max_weight || temperaments ){
+    if(!name || !min_height || !max_height || !min_weight || !max_weight || !temperaments ){
         return res.status(400).json({error: 'Complete all fields requerid'})
     }
 
