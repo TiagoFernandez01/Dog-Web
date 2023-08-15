@@ -19,7 +19,7 @@ function Home() {
   const firstIndex = lastIndex - dogsPerPage;
   const currentDogs = allDogs.slice(firstIndex, lastIndex);
 
-  console.log(currentDogs);
+  //console.log(currentDogs);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
